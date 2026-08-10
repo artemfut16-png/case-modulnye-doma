@@ -1,0 +1,1267 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3 сделки на 16,9 млн руб за 3 мес при вложениях 50 тыс руб в Авито</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;900&family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0a0a0a;
+  --bg2: #0d0d0d;
+  --grid-color: rgba(255,255,255,0.06);
+  --accent: #e8ff4a;
+  --text-primary: #f5f5f0;
+  --text-muted: rgba(245,245,240,0.48);
+  --border: rgba(255,255,255,0.07);
+  --grid-size: 40px;
+}
+
+html, body {
+  background: var(--bg);
+  font-family: 'Onest', sans-serif;
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+body.locked { overflow: hidden; height: 100vh; }
+
+.hl { color: var(--accent); }
+
+.sec-label {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.sec-heading {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 64px 0;
+}
+.divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.divider span {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.18);
+  white-space: nowrap;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes scrollDrop {
+  0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  40%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  60%  { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  overflow: hidden;
+}
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+.bg-glow {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(232,255,74,0.04) 0%, transparent 70%);
+}
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 1100px; width: 100%; text-align: center;
+}
+.hero-heading {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: clamp(24px, 3.6vw, 52px);
+  white-space: nowrap;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  animation: fadeUp 0.6s 0.1s ease both;
+  margin-bottom: 28px;
+}
+.hero-sub {
+  font-size: clamp(14px, 1.7vw, 17px);
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--text-muted);
+  max-width: 680px;
+  margin: 0 auto 48px;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+.hero-sub strong { font-weight: 500; color: var(--text-primary); }
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #0a0a0a;
+  background: var(--accent);
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  border-radius: 10px;
+  padding: 14px 28px;
+  animation: fadeUp 0.6s 0.35s ease both;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.btn-accent:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(232,255,74,0.25); }
+.scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); z-index: 1; }
+.scroll-line {
+  width: 1px; height: 36px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.2), transparent);
+  animation: scrollDrop 1.6s 1s infinite;
+}
+
+/* ─── CONTENT REVEAL ─── */
+.case-content { opacity: 1; }
+.case-content.is-hidden { display: none; }
+
+/* ─── SECTION BASE ─── */
+.section { padding: 72px 24px; }
+.section-inner { max-width: 900px; margin: 0 auto; }
+.section--dark { background: transparent; }
+
+/* ─── BLOCK 2: КТО Я ─── */
+.who-grid { display: grid; grid-template-columns: 72px 1fr; gap: 24px; align-items: start; margin-bottom: 40px; }
+.who-avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: rgba(232,255,74,0.07);
+  border: 1px solid rgba(232,255,74,0.18);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Unbounded', sans-serif;
+  font-size: 18px; font-weight: 700; color: var(--accent); flex-shrink: 0;
+}
+.who-name { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: clamp(18px, 2.5vw, 28px); letter-spacing: -0.02em; margin-bottom: 5px; }
+.who-role { font-size: 14px; color: var(--text-muted); }
+.who-bio { font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--text-muted); margin-bottom: 40px; }
+.who-bio strong { font-weight: 500; color: var(--text-primary); }
+.who-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.who-stat { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 14px; padding: 22px 20px; text-align: center; }
+.who-stat-num { font-family: 'Unbounded', sans-serif; font-size: clamp(18px, 2.5vw, 28px); font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+.who-stat-label { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+/* ─── BLOCK 3: ТОЧКА А ─── */
+.pa-heading { font-size: clamp(24px, 3.5vw, 44px); margin-bottom: 20px; }
+.pa-sub { font-size: 17px; font-weight: 300; line-height: 1.75; color: var(--text-muted); margin-bottom: 48px; }
+.pa-sub strong { font-weight: 500; color: var(--text-primary); }
+.pa-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.pa-card { background: rgba(255,255,255,0.025); border: 1px solid var(--border); border-radius: 14px; padding: 24px 20px; }
+.pa-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.pa-card-title { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 8px; }
+.pa-card-text { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+/* ─── BLOCK 4: ЧТО СДЕЛАЛИ ─── */
+.did-hook-heading { font-size: clamp(28px, 5vw, 64px); margin-bottom: 14px; }
+.did-hook-sub { font-size: 17px; color: var(--text-muted); margin-bottom: 44px; line-height: 1.65; }
+.avito-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 28px; filter: saturate(0.2) brightness(0.6); }
+.avito-card { background: #1a1a1a; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); }
+.avito-img { width: 100%; height: 120px; position: relative; background: #1e1e1e; display: flex; align-items: flex-end; padding: 8px; }
+.avito-img::before { content: ''; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 65px; height: 48px; background: #2e2e2e; clip-path: polygon(10% 100%, 10% 42%, 50% 5%, 90% 42%, 90% 100%); }
+.avito-lbl { position: relative; background: rgba(0,0,0,0.5); color: #999; font-size: 10px; padding: 2px 6px; border-radius: 3px; }
+.avito-body { padding: 10px 12px 12px; }
+.avito-price { font-family: 'Unbounded', sans-serif; font-size: 12px; font-weight: 600; color: #ddd; margin-bottom: 5px; }
+.avito-title { font-size: 11px; color: #777; line-height: 1.4; margin-bottom: 5px; }
+.avito-meta { font-size: 10px; color: #444; }
+.problem-callout {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-left: 3px solid rgba(255,255,255,0.15);
+  border-radius: 0 10px 10px 0;
+  padding: 20px 24px; margin-bottom: 64px;
+  font-size: 15px; color: var(--text-muted); line-height: 1.65;
+}
+.problem-callout strong { color: var(--text-primary); font-weight: 500; }
+.did-steps { display: flex; flex-direction: column; gap: 0; }
+.did-step { display: grid; grid-template-columns: 48px 1fr; gap: 0; padding: 28px 0; border-bottom: 1px solid var(--border); }
+.did-step:last-child { border-bottom: none; }
+.step-photo-placeholder {
+  margin-top: 16px;
+  width: 100%;
+  min-height: 180px;
+  border: 1.5px dashed rgba(255,255,255,0.12);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.01);
+  transition: border-color 0.2s, background 0.2s;
+  cursor: pointer;
+}
+.step-photo-placeholder:hover {
+  border-color: rgba(232,255,74,0.25);
+  background: rgba(232,255,74,0.02);
+}
+.step-photo-placeholder span {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.18);
+}
+.step-photo-placeholder:hover span {
+  color: rgba(232,255,74,0.4);
+}
+.step-num { font-family: 'Unbounded', sans-serif; font-size: 11px; font-weight: 700; color: rgba(232,255,74,0.3); padding-top: 3px; }
+.step-title { font-size: 16px; font-weight: 500; color: var(--text-primary); margin-bottom: 8px; }
+.step-text { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+.funnel-block { margin-top: 48px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 16px; padding: 32px 28px; }
+.strategy-intro { margin-top: 56px; margin-bottom: 0; padding: 28px 32px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-left: 3px solid rgba(232,255,74,0.4); border-radius: 0 14px 14px 0; }
+.strategy-intro-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+.strategy-intro-text { font-size: 16px; font-weight: 300; line-height: 1.8; color: var(--text-muted); }
+.strategy-intro-text strong { font-weight: 500; color: var(--text-primary); }
+.funnel-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 28px; }
+.funnel-steps { display: flex; align-items: center; gap: 0; }
+.funnel-step { flex: 1; text-align: center; }
+.funnel-icon { width: 44px; height: 44px; border-radius: 50%; background: rgba(232,255,74,0.05); border: 1px solid rgba(232,255,74,0.14); display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; }
+.funnel-step-label { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+.funnel-arrow { flex-shrink: 0; color: rgba(232,255,74,0.25); font-size: 18px; font-weight: 700; padding: 0 4px; margin-bottom: 32px; }
+
+/* ─── BLOCK 5: РЕЗУЛЬТАТ ─── */
+.result-heading { font-size: clamp(24px, 3.5vw, 46px); margin-bottom: 16px; }
+.result-sub { font-size: 17px; color: var(--text-muted); margin-bottom: 36px; font-weight: 300; line-height: 1.65; }
+.result-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-bottom: 12px; }
+.result-card { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 14px; padding: 28px 20px; text-align: center; }
+.result-card.accent { background: rgba(232,255,74,0.04); border-color: rgba(232,255,74,0.18); }
+.result-num { font-family: 'Unbounded', sans-serif; font-size: clamp(20px, 3vw, 34px); font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 10px; }
+.result-label { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+.result-note { font-size: 14px; color: var(--text-muted); text-align: center; line-height: 1.7; }
+.result-note strong { color: var(--text-primary); font-weight: 500; }
+
+.result-pipeline {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; margin: 12px 0 32px;
+  background: rgba(255,255,255,0.02); border: 1px solid var(--border);
+  border-radius: 16px; padding: 28px 20px;
+}
+.rp-step { flex: 1; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.rp-num { font-family: 'Unbounded', sans-serif; font-size: clamp(14px, 1.6vw, 22px); font-weight: 700; color: var(--text-primary); line-height: 1; white-space: nowrap; margin-bottom: 6px; }
+.rp-step--accent .rp-num { color: var(--accent); }
+.rp-label { font-size: 12px; color: var(--text-muted); }
+.rp-arrow { color: rgba(255,255,255,0.14); font-size: 20px; font-weight: 700; padding: 0 8px; flex-shrink: 0; display: flex; align-items: center; }
+
+.cabinet-screenshot { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; margin-top: 48px; }
+.cabinet-label { background: rgba(255,255,255,0.03); border-bottom: 1px solid var(--border); padding: 12px 20px; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); }
+.cabinet-img { display: block; width: 100%; height: auto; }
+
+/* ─── STRATEGY BLOCK ─── */
+.strategy-block { margin-top: 48px; }
+.strategy-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 28px; }
+.strategy-steps { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+.strategy-step { display: grid; grid-template-columns: 72px 1fr; gap: 0; padding: 28px 28px; border-bottom: 1px solid var(--border); transition: background 0.2s; align-items: start; }
+.strategy-step:last-child { border-bottom: none; }
+.strategy-step:hover { background: rgba(255,255,255,0.02); }
+.ss-num { font-family: 'Unbounded', sans-serif; font-size: 32px; font-weight: 700; color: rgba(232,255,74,0.2); line-height: 1; padding-top: 2px; }
+.ss-title { font-size: 16px; font-weight: 500; color: var(--text-primary); margin-bottom: 8px; }
+.ss-text { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+/* ─── CITY TEST-DRIVE GRID ─── */
+
+/* ─── CAROUSEL ─── */
+.carousel-wrap { position: relative; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; max-width: 100%; }
+.carousel-bottombar { display: flex; align-items: center; justify-content: space-between; padding: 16px 0 0; }
+.carousel-topbar { display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+.carousel-counter { font-size: 12px; color: var(--text-muted); white-space: nowrap; font-family: 'Unbounded', sans-serif; font-size: 11px; }
+.carousel-controls { display: flex; align-items: center; gap: 6px; }
+.carousel-track { position: relative; width: 100%; }
+.carousel-slide { display: none; border-radius: 0; overflow: hidden; background: rgba(255,255,255,0.02); }
+.carousel-slide.carousel-active { display: block; }
+.carousel-city-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+.carousel-city-name { font-family: 'Unbounded', sans-serif; font-size: clamp(14px, 2vw, 20px); font-weight: 700; color: var(--text-primary); }
+.carousel-city-stats { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text-muted); }
+.carousel-num { font-family: 'Unbounded', sans-serif; font-size: 14px; font-weight: 700; color: var(--accent); }
+.carousel-dot { color: var(--border); }
+.carousel-img-wrap { background: #fff; aspect-ratio: 1600 / 1000; overflow: hidden; }
+.carousel-img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.carousel-controls { display: flex; align-items: center; gap: 10px; }
+.carousel-btn { width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--border); background: rgba(255,255,255,0.03); color: var(--text-primary); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; flex-shrink: 0; }
+.carousel-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(232,255,74,0.06); }
+.carousel-dots { display: flex; align-items: center; gap: 6px; }
+.carousel-dot-btn { width: 6px; height: 6px; border-radius: 50%; border: none; background: rgba(255,255,255,0.15); cursor: pointer; padding: 0; transition: background 0.2s, transform 0.2s; }
+.carousel-dot-btn.dot-active { background: var(--accent); transform: scale(1.4); }
+.carousel-counter { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+
+
+
+
+/* ─── CREATIVE SHOWCASE ─── */
+.creative-showcase { margin: 0 0 0 48px; padding: 28px; background: rgba(232,255,74,0.03); border: 1px solid rgba(232,255,74,0.15); border-radius: 14px; }
+.cs-intro { margin-bottom: 20px; }
+.cs-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.cs-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+.cs-grid { display: flex; align-items: flex-start; gap: 16px; }
+.cs-original { flex-shrink: 0; width: 160px; position: relative; }
+.cs-arrow-col { font-size: 24px; color: rgba(232,255,74,0.3); padding-top: 40px; flex-shrink: 0; }
+.cs-variants { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; flex: 1; }
+.cs-variant { position: relative; }
+.cs-tag { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+.cs-tag--src { color: var(--accent); }
+.cs-img { width: 100%; height: auto; border-radius: 8px; display: block; border: 1px solid var(--border); cursor: zoom-in; transition: opacity 0.2s; }
+.cs-img:hover { opacity: 0.85; }
+/* Лайтбокс */
+.lightbox { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; cursor: zoom-out; }
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 10px; object-fit: contain; box-shadow: 0 24px 80px rgba(0,0,0,0.7); }
+.lightbox-close { position: absolute; top: 20px; right: 24px; font-size: 32px; color: rgba(255,255,255,0.6); cursor: pointer; line-height: 1; transition: color 0.2s; }
+.lightbox-close:hover { color: var(--accent); }
+/* Highlight step 05 title */
+.did-step:nth-child(5) .step-title { color: var(--accent); }
+@media (max-width: 700px) {
+  .cs-grid { flex-direction: column; }
+  .cs-arrow-col { padding-top: 0; align-self: center; transform: rotate(90deg); }
+  .cs-original { width: 100%; }
+}
+/* ─── PROOF CAROUSEL ─── */
+.proof-carousel { position: relative; }
+.proof-carousel-viewport { overflow: hidden; border-radius: 14px; aspect-ratio: 1600 / 1200; width: 100%; background: #111; }
+.proof-carousel-track { display: flex; height: 100%; transition: transform 0.35s ease; }
+.proof-carousel-slide { min-width: 100%; height: 100%; flex-shrink: 0; }
+.proof-carousel-slide img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.proof-carousel-nav { display: flex; align-items: center; justify-content: space-between; padding: 16px 0 0; }
+.proof-carousel-dots { display: flex; gap: 6px; align-items: center; }
+.proof-carousel-dot { width: 6px; height: 6px; border-radius: 50%; border: none; background: rgba(255,255,255,0.2); cursor: pointer; padding: 0; transition: background 0.2s, transform 0.2s; }
+.proof-carousel-dot.active { background: var(--accent); transform: scale(1.4); }
+.proof-carousel-btns { display: flex; gap: 8px; }
+.proof-carousel-btn { width: 34px; height: 34px; border-radius: 10px; border: 1px solid var(--border); background: rgba(255,255,255,0.04); color: var(--text-primary); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
+.proof-carousel-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(232,255,74,0.06); }
+.proof-carousel-counter { font-size: 11px; font-family: 'Unbounded', sans-serif; color: var(--text-muted); }
+
+/* ─── STEPS FLOW ─── */
+.steps-flow { display: flex; flex-direction: column; }
+.steps-flow-item { display: grid; grid-template-columns: 56px 1fr; gap: 0; }
+.steps-flow-left { display: flex; flex-direction: column; align-items: center; padding-top: 2px; }
+@keyframes stepGlow {
+  from { background: rgba(232,255,74,0.04); border-color: rgba(232,255,74,0.1); color: rgba(232,255,74,0.2); box-shadow: none; }
+  to   { background: rgba(232,255,74,0.15); border-color: rgba(232,255,74,0.45); color: var(--accent); box-shadow: 0 0 14px rgba(232,255,74,0.18); }
+}
+@keyframes lineGlow {
+  from { background: rgba(255,255,255,0.07); }
+  to   { background: rgba(232,255,74,0.25); }
+}
+.steps-flow-num {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px; font-weight: 700;
+  color: rgba(232,255,74,0.2);
+  background: rgba(232,255,74,0.04);
+  border: 1px solid rgba(232,255,74,0.1);
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.4s ease;
+}
+.steps-flow-line { flex: 1; width: 1px; background: rgba(255,255,255,0.07); margin: 8px 0; min-height: 24px; transition: background 0.4s ease; }
+
+/* Анимация при появлении */
+.steps-flow.lit .steps-flow-item:nth-child(1) .steps-flow-num { animation: stepGlow 1s 0s ease forwards; }
+.steps-flow.lit .steps-flow-item:nth-child(1) .steps-flow-line { animation: lineGlow 1s 1.5s ease forwards; }
+.steps-flow.lit .steps-flow-item:nth-child(2) .steps-flow-num { animation: stepGlow 1s 3s ease forwards; }
+.steps-flow.lit .steps-flow-item:nth-child(2) .steps-flow-line { animation: lineGlow 1s 4.5s ease forwards; }
+.steps-flow.lit .steps-flow-item:nth-child(3) .steps-flow-num { animation: stepGlow 1s 6s ease forwards; }
+.steps-flow.lit .steps-flow-item:nth-child(3) .steps-flow-line { animation: lineGlow 1s 7.5s ease forwards; }
+.steps-flow.lit .steps-flow-item:nth-child(4) .steps-flow-num { animation: stepGlow 1s 9s ease forwards; }
+.steps-flow.lit .steps-flow-item:nth-child(4) .steps-flow-line { animation: lineGlow 1s 10.5s ease forwards; }
+.steps-flow.lit .steps-flow-item:nth-child(5) .steps-flow-num { animation: stepGlow 1s 12s ease forwards; }
+.steps-flow-body { padding: 4px 0 36px 4px; }
+.steps-flow-item--last .steps-flow-body { padding-bottom: 0; }
+.steps-flow-title { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 8px; }
+.steps-flow-text { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+/* ─── VISUAL FUNNEL (legacy) ─── */
+.vf-num {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 11px; font-weight: 700;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+.vf-num--accent { color: rgba(232,255,74,0.5); }
+.vf-title { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 10px; line-height: 1.4; }
+.vf-text { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+@media (max-width: 700px) {
+  .vf-row--narrow, .vf-row--final { max-width: 100%; }
+  .vf-row--2 { flex-direction: column; }
+}
+
+/* ─── FUNNEL GRID ─── */
+.funnel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.fg-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 24px 24px 28px;
+  transition: border-color 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.fg-card:hover { border-color: rgba(255,255,255,0.14); }
+.fg-card--accent {
+  background: rgba(232,255,74,0.03);
+  border-color: rgba(232,255,74,0.12);
+}
+.fg-card--accent:hover { border-color: rgba(232,255,74,0.22); }
+.fg-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+.fg-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+  flex: 1;
+}
+.fg-num {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.07);
+  line-height: 1;
+  flex-shrink: 0;
+}
+.fg-num--accent { color: rgba(232,255,74,0.15); }
+.fg-text { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+.fg-icon { display: none; }
+
+@media (max-width: 700px) {
+  .funnel-grid { grid-template-columns: 1fr; }
+}
+
+/* ─── FLOW STEPS ─── */
+.flow-steps { display: flex; flex-direction: column; gap: 0; max-width: 760px; }
+.flow-step { display: grid; grid-template-columns: 80px 1fr; gap: 0; align-items: start; }
+.flow-step--final .flow-body { border-bottom: none; }
+.flow-connector { width: 80px; text-align: center; font-size: 16px; color: rgba(232,255,74,0.25); line-height: 1; padding: 6px 0; }
+.flow-badge {
+  display: flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.4);
+  margin-top: 16px; flex-shrink: 0;
+}
+.flow-badge--accent {
+  background: rgba(232,255,74,0.08); border-color: rgba(232,255,74,0.3);
+  color: var(--accent);
+}
+.flow-body { padding: 16px 0 24px 0; border-bottom: 1px solid var(--border); }
+.flow-title { font-size: 16px; font-weight: 500; color: var(--text-primary); margin-bottom: 8px; }
+.flow-text { font-size: 13px; color: var(--text-muted); line-height: 1.75; }
+
+/* ─── BLOCK 6: ТЕСТ-ДРАЙВ ─── */
+.td-heading { font-size: clamp(24px, 3.5vw, 50px); margin-bottom: 20px; text-align: left; }
+.td-sub { font-size: 17px; color: var(--text-muted); max-width: 580px; margin: 0 0 36px; font-weight: 300; line-height: 1.75; }
+.td-sub strong { font-weight: 500; color: var(--text-primary); }
+
+.td-how { margin: 40px 0; }
+.td-how-label { font-family: 'Unbounded', sans-serif; font-size: clamp(20px, 2.5vw, 36px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--text-primary); margin-bottom: 28px; }
+.td-how-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+.thg-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 22px 22px 26px; transition: border-color 0.2s; }
+.thg-card:hover { border-color: rgba(255,255,255,0.14); }
+.thg-card--accent { background: rgba(232,255,74,0.03); border-color: rgba(232,255,74,0.12); }
+.thg-card--accent:hover { border-color: rgba(232,255,74,0.22); }
+.thg-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+.thg-title { font-size: 14px; font-weight: 500; color: var(--text-primary); line-height: 1.4; flex: 1; }
+.thg-num { font-family: 'Unbounded', sans-serif; font-size: 26px; font-weight: 700; color: rgba(255,255,255,0.07); line-height: 1; flex-shrink: 0; }
+.thg-num--accent { color: rgba(232,255,74,0.15); }
+.thg-text { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+.thg-card--wide { grid-column: span 2; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; min-width: 0; overflow: hidden; }
+.thg-logic-row { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--text-muted); line-height: 1.55; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.thg-logic-row:last-of-type { border-bottom: none; }
+.thg-logic-row strong { color: var(--text-primary); font-weight: 500; }
+.thg-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.thg-dot--yes { background: var(--accent); }
+.thg-dot--no  { background: rgba(255,255,255,0.2); }
+.thg-logic-text { flex: 1; }
+@media (max-width: 700px) { .thg-card--wide { grid-column: span 1; } }
+.td-sub { font-size: 17px; color: var(--text-muted); max-width: 580px; margin: 0 auto 52px; font-weight: 300; line-height: 1.75; }
+.td-sub strong { font-weight: 500; color: var(--text-primary); }
+.td-conditions { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; width: 100%; margin: 0 0 40px; }
+.td-cond { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 14px; padding: 24px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.td-cond-val { font-family: 'Unbounded', sans-serif; font-size: clamp(18px, 2.5vw, 26px); font-weight: 700; color: var(--accent); margin-bottom: 8px; line-height: 1; }
+.td-cond-label { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+.td-logic { background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 14px; padding: 22px 28px; max-width: 580px; margin: 0 auto 44px; text-align: left; }
+.td-logic-row { display: flex; align-items: center; gap: 12px; font-size: 14px; color: var(--text-muted); line-height: 1.55; padding: 10px 0; border-bottom: 1px solid var(--border); }
+.td-logic-row:last-child { border-bottom: none; }
+.td-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.td-dot--yes { background: var(--accent); }
+.td-dot--no  { background: rgba(255,255,255,0.2); }
+.td-logic-row strong { color: var(--text-primary); font-weight: 500; }
+.td-cta-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.btn-tg {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 16px; font-weight: 500; color: #0a0a0a;
+  background: var(--accent); text-decoration: none;
+  border-radius: 12px; padding: 18px 44px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  width: fit-content;
+}
+.btn-tg:hover { transform: translateY(-2px); box-shadow: 0 10px 36px rgba(232,255,74,0.28); }
+.td-microcopy { font-size: 13px; color: var(--text-muted); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 700px) {
+  /* Spacing */
+  .section { padding: 44px 16px; }
+  .hero { padding: 60px 16px 72px; }
+  .divider { margin: 32px 0; }
+
+  /* Hero */
+  .hero-heading { white-space: normal; font-size: clamp(20px, 6vw, 26px); line-height: 1.2; }
+  .hero-sub { font-size: 14px; margin-bottom: 28px; }
+  .btn-accent { font-size: 14px; padding: 14px 20px; width: 100%; justify-content: center; }
+
+  /* Typography */
+  .who-bio { font-size: 15px; }
+  .pa-sub, .result-sub, .td-sub, .did-hook-sub, .strategy-intro-text { font-size: 15px; }
+  .step-text, .ss-text, .flow-text, .steps-flow-text, .fg-text, .thg-text { font-size: 13px; }
+
+  /* Force heading wrap */
+  h1, h2 { white-space: normal !important; }
+
+  /* Who block — avatar stays inline */
+  .who-grid { grid-template-columns: 64px 1fr; gap: 16px; }
+  .who-avatar { width: 64px; height: 64px; }
+  .who-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+
+  /* PA cards — single column */
+  .pa-cards { grid-template-columns: 1fr; gap: 8px; }
+
+  /* Grids → two / one column */
+  .result-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .td-conditions { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .avito-grid { grid-template-columns: 1fr; }
+  .funnel-grid { grid-template-columns: 1fr; }
+
+  /* Test-drive how grid — single column so wide card fills row */
+  .td-how-grid { grid-template-columns: 1fr; gap: 10px; }
+  .thg-card--wide { grid-column: span 1; }
+
+  /* Did steps */
+  .did-step { grid-template-columns: 32px 1fr; }
+
+  /* Strategy steps */
+  .strategy-step { grid-template-columns: 44px 1fr; padding: 16px 14px; }
+  .strategy-intro { padding: 20px 16px; }
+  .ss-num { font-size: 20px; }
+
+  /* Flow steps */
+  .flow-step { grid-template-columns: 52px 1fr; }
+  .steps-flow-item { grid-template-columns: 44px 1fr; }
+
+  /* Result pipeline: vertical */
+  .result-pipeline { flex-direction: column; gap: 0; padding: 16px 12px; }
+  .rp-step { padding: 8px 0; }
+  .rp-arrow { transform: rotate(90deg); padding: 2px 0; font-size: 14px; }
+
+  /* Funnel */
+  .funnel-steps { flex-direction: column; gap: 12px; }
+  .funnel-arrow { transform: rotate(90deg); margin: 0; }
+
+  /* Problem callout */
+  .problem-callout { padding: 16px; font-size: 14px; margin-bottom: 40px; }
+
+  /* Creative showcase */
+  .creative-showcase { margin-left: 0; padding: 16px; }
+  .cs-grid { flex-direction: column; }
+  .cs-arrow-col { padding-top: 0; align-self: center; transform: rotate(90deg); }
+  .cs-original { width: 100%; }
+  .cs-variants { grid-template-columns: 1fr 1fr; }
+
+  /* City carousel */
+  .carousel-city-header { flex-direction: column; align-items: flex-start; gap: 6px; padding: 12px 14px; }
+  .carousel-city-stats { flex-wrap: wrap; gap: 6px; font-size: 13px; }
+  .carousel-bottombar { flex-wrap: wrap; gap: 10px; justify-content: center; padding-top: 12px; }
+
+  /* Proof carousel */
+  .proof-carousel-viewport { aspect-ratio: 4/3; }
+
+  /* TD how label */
+  .td-how-label { font-size: clamp(18px, 5.5vw, 26px); }
+
+  /* Btns */
+  .btn-tg { padding: 16px; font-size: 15px; width: 100%; box-sizing: border-box; justify-content: center; }
+
+  /* Cabinet screenshot */
+  .cabinet-screenshot { margin-top: 28px; }
+}
+
+@keyframes btnPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232,255,74,0.5); }
+  50% { box-shadow: 0 0 0 12px rgba(232,255,74,0); }
+}
+@keyframes btnPulseDark {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(10,10,10,0.5); }
+  50% { box-shadow: 0 0 0 14px rgba(10,10,10,0); }
+}
+.btn-pulse { animation: btnPulse 2s ease-in-out infinite; }
+.btn-pulse-dark { animation: btnPulseDark 2s ease-in-out infinite; }
+</style>
+</head>
+<body>
+
+<!-- ═══ BLOCK 1: HERO ═══ -->
+<section class="hero">
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+  <div class="hero-inner">
+    <h1 class="hero-heading">
+      Вложили <span class="hl">52 000 ₽</span> в Авито<br>
+      и получили <span class="hl">16 900 000 ₽</span><br>
+      выручки за 3 месяца
+    </h1>
+    <p class="hero-sub">
+      Показываю на реальном кейсе, как владелец строительной компании <strong>начал зарабатывать дополнительно 1 млн ₽ чистой прибыли в месяц</strong>
+      на домах из газобетона <strong>и как эту стратегию можно протестировать всего за <span style="white-space:nowrap;">3 000 ₽</span></strong>
+    </p>
+    <a href="#case" class="btn-accent btn-pulse" id="readBtn">Читать кейс полностью ↓</a>
+  </div>
+  <div class="scroll-hint"><div class="scroll-line"></div></div>
+</section>
+
+<!-- ═══ ОСТАЛЬНЫЕ БЛОКИ ═══ -->
+<div class="case-content is-hidden" id="case">
+
+  <!-- ═══ BLOCK 2: КТО Я ═══ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="sec-label">Кто за этим стоит ?</div>
+      <div class="who-grid">
+        <div class="who-avatar" style="overflow:hidden;padding:0;background:none;border:1px solid rgba(232,255,74,0.2);">
+          <img src="img/avatar_1.jpg" alt="Артем Лутов" style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div>
+          <div class="who-name">Артем Лутов</div>
+          <div class="who-role">Маркетолог в нише малоэтажного строительства</div>
+        </div>
+      </div>
+      <p class="who-bio">
+        <strong>Более 2 лет я занимаюсь упаковкой и продвижением строительных компаний по всей России. За это время потрачено более 600 000 ₽ на тесты.</strong> Протестировал десятки гипотез,
+        выяснил, что работает, а что сливает бюджет, и нашел стратегию, которая стабильно приносит результат<br><br>
+        В этом кейсе покажу, как я организовал привлечение клиентов на строительство домов
+        из газобетона со средним чеком 5,5 млн ₽ через Авито
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ BLOCK 3: ТОЧКА А ═══ -->
+  <section class="section section--dark">
+    <div class="section-inner">
+      <div class="sec-label">С чего начинали ?</div>
+      <h2 class="sec-heading pa-heading">
+        Объявления висели, но клиентов <span class="hl">не приносили</span>
+      </h2>
+      <p class="pa-sub">
+        Когда клиент обратился ко мне, ситуация была типичной для большинства строительных компаний.
+        Объявления на Авито были, но работали еле-еле.
+        Основной поток клиентов шел через агентства недвижимости и сарафанное радио — хаотично, без системы и без возможности влиять на поток
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ BLOCK 4: ЧТО СДЕЛАЛИ ═══ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="sec-label">Система под ключ</div>
+
+      <h2 class="sec-heading" style="font-size:clamp(20px,2.5vw,36px);margin-bottom:36px;">Что именно я выстроил,<br>чтобы получить <span class="hl">такой результат ?</span></h2>
+
+      <div class="did-steps">
+        <div class="did-step">
+          <div class="step-num">01</div>
+          <div>
+            <div class="step-title">Проанализировал конкурентов в нише</div>
+            <div class="step-text">Спарсил объявления по региону, выявил форматы с максимальным числом просмотров. Прозвонил каждого конкурента: зафиксировал цены, условия, сильные и слабые стороны. На основе анализа сформировал стратегию продвижения, которая позволила выделиться в поисковой выдаче</div>
+            <div class="step-imgs"><img src="img/koncurent_1.png" alt="Проанализировал конкурентов в нише" style="width:100%;height:auto;border-radius:10px;margin-top:8px;border:1px solid var(--border);"></div>
+          </div>
+        </div>
+        <div class="did-step">
+          <div class="step-num">02</div>
+          <div>
+            <div class="step-title">Определил целевую аудиторию и проработал смыслы</div>
+            <div class="step-text">Определил приоритетный сегмент — семьи, которые рассматривают строительство через семейную ипотеку 6%. Проработал их ключевые боли, страхи и желания, и на основе этого выстроил тексты объявлений, которые попадают точно в запрос покупателя</div>
+            <div class="step-imgs"><img src="img/ca_1.png" alt="Разбил целевую аудиторию на сегменты" style="width:100%;height:auto;border-radius:10px;margin-top:8px;border:1px solid var(--border);"></div>
+          </div>
+        </div>
+        <div class="did-step">
+          <div class="step-num">03</div>
+          <div>
+            <div class="step-title">Разработал каталог проектов как лид-магнит</div>
+            <div class="step-text">Взял объекты, которые компания уже строила, и создал из них веб-каталог: сгенерировал рендеры через нейросеть, написал описания, отрисовал планировки. Каталог стал главным инструментом захвата контакта — клиент пишет «КАТАЛОГ» и получает ссылку, оставив номер телефона</div>
+            <div class="step-imgs"><img src="img/caralog_1.png" alt="Разработал каталог проектов как лид-магнит" style="width:100%;height:auto;border-radius:10px;margin-top:8px;border:1px solid var(--border);"><img src="img/caralog_2.png" alt="Разработал каталог проектов как лид-магнит" style="width:100%;height:auto;border-radius:10px;margin-top:8px;border:1px solid var(--border);"></div>
+          </div>
+        </div>
+        <div class="did-step">
+          <div class="step-num">04</div>
+          <div>
+            <div class="step-title">Собрал SEO и вписал поисковые запросы в тексты</div>
+            <div class="step-text">Собрал весь пул релевантных поисковых запросов, определил частотность, сгруппировал по кластерам. Вписал поисковые запросы в тексты объявлений, чтобы показываться большему числу потенциальных клиентов</div>
+            <div class="step-imgs"><img src="img/seo_1.png" alt="Собрал SEO и вписал поисковые запросы в тексты" style="width:100%;height:auto;border-radius:10px;margin-top:8px;border:1px solid var(--border);"><img src="img/seo_2.png" alt="Собрал SEO и вписал поисковые запросы в тексты" style="width:100%;height:auto;border-radius:10px;margin-top:8px;border:1px solid var(--border);"><img src="img/seo_3.png" alt="Собрал SEO и вписал поисковые запросы в тексты" style="width:100%;height:auto;border-radius:10px;margin-top:8px;border:1px solid var(--border);"></div>
+          </div>
+        </div>
+        <div class="did-step" style="border-bottom:none;">
+          <div class="step-num">05</div>
+          <div>
+            <div class="step-title" style="color:var(--accent);">Создал креативы, которые невозможно не заметить</div>
+            <div class="step-text">Большинство конкурентов используют одни и те же фотографии домов — мои объявления визуально выбивались из ряда. Через ИИ переработал фотографии, которые имеют более высокий CTR, за счет этого объявления попадали в блок рекомендаций и мы получали дополнительный органический трафик от Авито</div>
+          </div>
+        </div>
+
+        <!-- CREATIVE SHOWCASE -->
+        <div class="creative-showcase">
+          <div class="cs-intro">
+            <div class="cs-label">Как это работает на практике</div>
+            <p class="cs-desc">Из одной исходной фотографии создаем несколько вариантов с людьми через нейросети — объявление сразу выделяется в выдаче</p>
+          </div>
+          <div class="cs-grid">
+            <div class="cs-original">
+              <div class="cs-tag cs-tag--src">Исходник</div>
+              <img src="img/factfoto_1.png" alt="Исходное фото" class="cs-img">
+            </div>
+            <div class="cs-arrow-col">→</div>
+            <div class="cs-variants">
+              <div class="cs-variant">
+                <div class="cs-tag">Вариант 1</div>
+                <img src="img/generate_4.png" alt="Вариант 1" class="cs-img">
+              </div>
+              <div class="cs-variant">
+                <div class="cs-tag">Вариант 2</div>
+                <img src="img/generate_2.png" alt="Вариант 2" class="cs-img">
+              </div>
+              <div class="cs-variant">
+                <div class="cs-tag">Вариант 3</div>
+                <img src="img/generate_3.png" alt="Вариант 3" class="cs-img">
+              </div>
+              <div class="cs-variant">
+                <div class="cs-tag">Вариант 4</div>
+                <img src="img/generate_1.png" alt="Вариант 4" class="cs-img">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="did-step">
+          <div class="step-num">06</div>
+          <div>
+            <div class="step-title">Упаковал профиль</div>
+            <div class="step-text">Оформил портфолио с реализованными проектами, заполнил описание услуг, добавил преимущества компании. Цель — повысить доверие и увеличить конверсию из просмотра профиля в обращение</div>
+            <div class="step-imgs"><img src="img/profile_1.png" alt="Упаковал профиль" style="width:100%;height:auto;border-radius:10px;margin-top:8px;border:1px solid var(--border);"></div>
+          </div>
+        </div>
+        <div class="did-step">
+          <div class="step-num">07</div>
+          <div>
+            <div class="step-title">Запустил объявления и подключил продвижение</div>
+            <div class="step-text">Опубликовал объявления в категории: Предложение услуг → Строительство → Строительство домов под ключ. Подключил платное продвижение, провел А/Б тест офферов и креативов, после 5-7 дней снял с публикации неэффективные объявления и масштабировал те, что давали наибольшее кол-во контактов</div>
+            <div class="step-imgs"><img src="img/creo_1.png" alt="Запустил объявления и подключил продвижение" style="width:100%;height:auto;border-radius:10px;margin-top:8px;border:1px solid var(--border);"><img src="img/creo_2.png" alt="Запустил объявления и подключил продвижение" style="width:100%;height:auto;border-radius:10px;margin-top:8px;border:1px solid var(--border);"></div>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══ BLOCK: ПОЛНАЯ СТРАТЕГИЯ ═══ -->
+  <section class="section section--dark">
+    <div class="section-inner">
+      <div style="margin-bottom:52px;">
+        <div class="sec-label">Воронка продаж</div>
+        <h2 class="sec-heading" style="font-size:clamp(22px,3vw,40px);">
+          Как клиент проходит путь<br>от <span class="hl">объявления до договора ?</span>
+        </h2>
+      </div>
+
+      <div class="steps-flow">
+        <div class="steps-flow-item">
+          <div class="steps-flow-left">
+            <div class="steps-flow-num">01</div>
+            <div class="steps-flow-line"></div>
+          </div>
+          <div class="steps-flow-body">
+            <div class="steps-flow-title">Объявление с лид-магнитом</div>
+            <div class="steps-flow-text">Клиент видит объявление с простым призывом — написать слово «КАТАЛОГ». Задача — сделать первый шаг максимально легким. Не «звоните и заказывайте», а просто одно слово — и каталог у вас. Чем проще действие — тем выше конверсия</div>
+          </div>
+        </div>
+        <div class="steps-flow-item">
+          <div class="steps-flow-left">
+            <div class="steps-flow-num">02</div>
+            <div class="steps-flow-line"></div>
+          </div>
+          <div class="steps-flow-body">
+            <div class="steps-flow-title">Чат-бот берет контакт</div>
+            <div class="steps-flow-text">Клиент пишет слово. Бот сразу отвечает и просит номер телефона. Клиент оставляет контакт, и заявка уходит менеджеру в работу — без ручного мониторинга и потерь</div>
+          </div>
+        </div>
+        <div class="steps-flow-item">
+          <div class="steps-flow-left">
+            <div class="steps-flow-num">03</div>
+            <div class="steps-flow-line"></div>
+          </div>
+          <div class="steps-flow-body">
+            <div class="steps-flow-title">Менеджер квалифицирует лид</div>
+            <div class="steps-flow-text">Менеджер отправляет каталог проектов, связывается с клиентом и вносит информацию в CRM. Цель — не продать дом сразу, а договориться о следующем шаге: встрече или показе объектов</div>
+          </div>
+        </div>
+        <div class="steps-flow-item">
+          <div class="steps-flow-left">
+            <div class="steps-flow-num">04</div>
+            <div class="steps-flow-line"></div>
+          </div>
+          <div class="steps-flow-body">
+            <div class="steps-flow-title">Встреча в офисе или показ построенных домов</div>
+            <div class="steps-flow-text">Здесь происходит основная продажа. У клиента максимум внимания и доверия. Все предыдущие шаги были нужны только для того, чтобы довести его до этого момента</div>
+          </div>
+        </div>
+        <div class="steps-flow-item steps-flow-item--last">
+          <div class="steps-flow-left">
+            <div class="steps-flow-num steps-flow-num--accent">05</div>
+          </div>
+          <div class="steps-flow-body">
+            <div class="steps-flow-title">Задаток и договор</div>
+            <div class="steps-flow-text">После встречи клиент принимает решение, вносит задаток и подписывает договор. Воронка завершена</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BLOCK 5: РЕЗУЛЬТАТ ═══ -->
+  <section class="section section--dark">
+    <div class="section-inner">
+      <div class="sec-label">Какой получился результат ?</div>
+      <h2 class="sec-heading result-heading">
+        <span class="hl">706 контактов</span> по 74 ₽<br>
+        и 3 договора на 16 900 000 ₽
+      </h2>
+      <p class="result-sub">За 3 месяца рекламной кампании получил следующие результаты:</p>
+
+      <div class="result-pipeline">
+        <div class="rp-step">
+          <div class="rp-num">52 893 ₽</div>
+          <div class="rp-label">Потрачено на рекламу</div>
+        </div>
+        <div class="rp-arrow">→</div>
+        <div class="rp-step">
+          <div class="rp-num">706</div>
+          <div class="rp-label">Контактов</div>
+        </div>
+        <div class="rp-arrow">→</div>
+        <div class="rp-step">
+          <div class="rp-num">11</div>
+          <div class="rp-label">Встреч</div>
+        </div>
+        <div class="rp-arrow">→</div>
+        <div class="rp-step rp-step--accent">
+          <div class="rp-num">3</div>
+          <div class="rp-label">Договора</div>
+        </div>
+        <div class="rp-arrow">→</div>
+        <div class="rp-step rp-step--accent">
+          <div class="rp-num">16,9 млн ₽</div>
+          <div class="rp-label">Выручка</div>
+        </div>
+      </div>
+
+      <div class="cabinet-screenshot">
+        <img src="img/case_itog.png" alt="Рекламный кабинет Авито" class="cabinet-img">
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ BLOCK: СОЦИАЛЬНЫЕ ДОКАЗАТЕЛЬСТВА ═══ -->
+  <section class="section section--dark">
+    <div class="section-inner">
+      <h2 class="sec-heading" style="font-size:clamp(20px,2.8vw,36px);margin-bottom:16px;">
+        Вот как это выглядит<br>в <span class="hl">реальных переписках</span>
+      </h2>
+      <p style="font-size:15px;color:var(--text-muted);margin-bottom:48px;font-weight:300;"><strong style="color:var(--text-primary);">3 клиента вышли на сделку</strong> за 3 месяца работы — среднее время от первого касания до внесения задатка составило 14 дней</p>
+
+      <div class="proof-carousel" id="proofCarousel">
+        <div class="proof-carousel-viewport">
+          <div class="proof-carousel-track" id="proofTrack">
+            <div class="proof-carousel-slide"><img src="img/dogovor_1.png" alt="Переписка 1"></div>
+            <div class="proof-carousel-slide"><img src="img/dogovor_2.png" alt="Переписка 2"></div>
+            <div class="proof-carousel-slide"><img src="img/dogovor_3.png" alt="Переписка 3"></div>
+          </div>
+        </div>
+        <div class="proof-carousel-nav">
+          <div class="proof-carousel-dots" id="proofDots">
+            <button class="proof-carousel-dot active" data-i="0"></button>
+            <button class="proof-carousel-dot" data-i="1"></button>
+            <button class="proof-carousel-dot" data-i="2"></button>
+          </div>
+          <span class="proof-carousel-counter" id="proofCounter">1 / 3</span>
+          <div class="proof-carousel-btns">
+            <button class="proof-carousel-btn" id="proofPrev">&#8592;</button>
+            <button class="proof-carousel-btn" id="proofNext">&#8594;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ BLOCK 6: ТЕСТ-ДРАЙВ ═══ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="sec-label">Хотите проверить это у себя ?</div>
+      <h2 class="sec-heading td-heading">
+        Не надо верить на слово —<br>
+        <span class="hl">проверьте за 3 дня</span>
+      </h2>
+      <p class="td-sub" style="margin-left:0;margin-right:0;text-align:left;">
+        Объем рынка, уровень конкуренции, средний чек — все это отличается от города к городу,
+        именно поэтому я не предлагаю сразу начинать комплексную работу.
+        Давайте сначала запустим <strong>тест-драйв</strong> — вы увидите реальные цифры
+        по вашему региону и сами решите, стоит ли работать далее комплексно или нет
+      </p>
+      <div class="td-conditions" style="margin-left:0;margin-right:0;">
+        <div class="td-cond">
+          <div class="td-cond-val">3 дня</div>
+          <div class="td-cond-label">Срок тест-драйва</div>
+        </div>
+        <div class="td-cond">
+          <div class="td-cond-val">3 000 ₽</div>
+          <div class="td-cond-label">Стоимость тест-драйва</div>
+        </div>
+        <div class="td-cond">
+          <div class="td-cond-val">5 000 ₽</div>
+          <div class="td-cond-label">Рекламный бюджет на Авито</div>
+        </div>
+        <div class="td-cond">
+          <div class="td-cond-val">~ 40</div>
+          <div class="td-cond-label">Кол-во контактов по итогам тест-драйва</div>
+        </div>
+      </div>
+
+
+      <div class="td-cta-wrap" style="display:none;"></div>
+    </div>
+  </section>
+
+
+    <!-- ═══ BLOCK 5.5: ТЕСТ-ДРАЙВЫ В ДРУГИХ ГОРОДАХ ═══ -->
+  <section class="section">
+    <div class="section-inner">
+      <h2 class="sec-heading" style="font-size:clamp(20px,2.8vw,36px);margin-bottom:28px;white-space:nowrap;">
+        Запускали тест-драйв в других городах<br>и <span class="hl">вот что получилось</span>
+      </h2>
+      <div id="cityCarousel">
+        <div class="carousel-wrap">
+        <div class="carousel-track">
+        <div class="carousel-slide carousel-active" data-index="0">
+          <div class="carousel-city-header">
+            <div class="carousel-city-name">Ставропольский и Краснодарский край</div>
+            <div class="carousel-city-stats">
+              <span><span class="carousel-num">172</span> контактов</span>
+              <span class="carousel-dot">·</span>
+              <span><span class="carousel-num">10 ₽</span> за контакт</span>
+            </div>
+          </div>
+          <div class="carousel-img-wrap">
+            <img src="img/case_stavrkrasnodar.png" alt="Статистика Ставропольский и Краснодарский край" class="carousel-img">
+          </div>
+        </div>
+        <div class="carousel-slide" data-index="1">
+          <div class="carousel-city-header">
+            <div class="carousel-city-name">Саратовская область</div>
+            <div class="carousel-city-stats">
+              <span><span class="carousel-num">34</span> контактов</span>
+              <span class="carousel-dot">·</span>
+              <span><span class="carousel-num">88,5 ₽</span> за контакт</span>
+            </div>
+          </div>
+          <div class="carousel-img-wrap">
+            <img src="img/case_saratov.png" alt="Статистика Саратовская область" class="carousel-img">
+          </div>
+        </div>
+        <div class="carousel-slide" data-index="2">
+          <div class="carousel-city-header">
+            <div class="carousel-city-name">Ростовская область</div>
+            <div class="carousel-city-stats">
+              <span><span class="carousel-num">48</span> контактов</span>
+              <span class="carousel-dot">·</span>
+              <span><span class="carousel-num">76,5 ₽</span> за контакт</span>
+            </div>
+          </div>
+          <div class="carousel-img-wrap">
+            <img src="img/case_rostov.png" alt="Статистика Ростовская область" class="carousel-img">
+          </div>
+        </div>
+        <div class="carousel-slide" data-index="3">
+          <div class="carousel-city-header">
+            <div class="carousel-city-name">Воронежская область</div>
+            <div class="carousel-city-stats">
+              <span><span class="carousel-num">55</span> контактов</span>
+              <span class="carousel-dot">·</span>
+              <span><span class="carousel-num">83,8 ₽</span> за контакт</span>
+            </div>
+          </div>
+          <div class="carousel-img-wrap">
+            <img src="img/case_voronezh.png" alt="Статистика Воронежская область" class="carousel-img">
+          </div>
+        </div>
+        <div class="carousel-slide" data-index="4">
+          <div class="carousel-city-header">
+            <div class="carousel-city-name">Краснодарский край</div>
+            <div class="carousel-city-stats">
+              <span><span class="carousel-num">40</span> контактов</span>
+              <span class="carousel-dot">·</span>
+              <span><span class="carousel-num">99,8 ₽</span> за контакт</span>
+            </div>
+          </div>
+          <div class="carousel-img-wrap">
+            <img src="img/case_krasnodar.png" alt="Статистика Краснодарский край" class="carousel-img">
+          </div>
+        </div>
+        </div>
+        </div>
+        <div class="carousel-bottombar">
+          <div class="carousel-dots" id="carouselDots"><button class="carousel-dot-btn dot-active" data-dot="0"></button><button class="carousel-dot-btn" data-dot="1"></button><button class="carousel-dot-btn" data-dot="2"></button><button class="carousel-dot-btn" data-dot="3"></button><button class="carousel-dot-btn" data-dot="4"></button></div>
+          <span class="carousel-counter" id="carouselCounter">1 / 5</span>
+          <div class="carousel-controls">
+            <button class="carousel-btn" id="prevBtn" aria-label="Назад">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="carousel-btn" id="nextBtn" aria-label="Вперед">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7.5 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-inner">
+      <div class="td-how">
+        <div class="td-how-label">Как проходит <span class="hl">тест-драйв ?</span></div>
+        <div class="td-how-grid">
+          <div class="thg-card">
+            <div class="thg-top">
+              <div class="thg-title">Оплата тест-драйва</div>
+              <div class="thg-num">01</div>
+            </div>
+            <div class="thg-text">Вы оплачиваете тест-драйв — это старт работы</div>
+          </div>
+          <div class="thg-card">
+            <div class="thg-top">
+              <div class="thg-title">Бриф по компании</div>
+              <div class="thg-num">02</div>
+            </div>
+            <div class="thg-text">В формате брифа собираю всю информацию по вашей компании и продукту</div>
+          </div>
+          <div class="thg-card">
+            <div class="thg-top">
+              <div class="thg-title">Контент от вас</div>
+              <div class="thg-num">03</div>
+            </div>
+            <div class="thg-text">Вы отправляете фото и видео материалы для создания объявлений</div>
+          </div>
+          <div class="thg-card">
+            <div class="thg-top">
+              <div class="thg-title">Доступ к Авито</div>
+              <div class="thg-num">04</div>
+            </div>
+            <div class="thg-text">Предоставляете данные для входа в аккаунт Авито и пополняете его на 5 000 ₽</div>
+          </div>
+          <div class="thg-card">
+            <div class="thg-top">
+              <div class="thg-title">Разработка и согласование</div>
+              <div class="thg-num">05</div>
+            </div>
+            <div class="thg-text">Разрабатываю материалы для запуска рекламной кампании и отправляю вам на согласование</div>
+          </div>
+          <div class="thg-card">
+            <div class="thg-top">
+              <div class="thg-title">Запуск рекламы</div>
+              <div class="thg-num">06</div>
+            </div>
+            <div class="thg-text">Выкладываю объявления и подключаю услуги продвижения на Авито</div>
+          </div>
+          <div class="thg-card thg-card--accent">
+            <div class="thg-top">
+              <div class="thg-title">Итоговый созвон</div>
+              <div class="thg-num thg-num--accent">07</div>
+            </div>
+            <div class="thg-text">По истечении 3 дней созваниваемся, обсуждаем итоги тест-драйва и дальнейшую стратегию</div>
+          </div>
+          <div class="thg-card thg-card--wide" style="background:var(--accent);border-color:var(--accent);">
+            <div style="margin-bottom:16px;">
+              <div style="font-size:15px;font-weight:500;color:#0a0a0a;margin-bottom:8px;line-height:1.5;">Работаю только с одной компанией в городе</div>
+              <div style="font-size:13px;color:rgba(10,10,10,0.6);line-height:1.7;">Проверьте, свободен ли ваш город и получите бесплатный разбор с планом запуска тест-драйва</div>
+            </div>
+            <a href="https://t.me/hai_artem?text=Артем, приветствую! Хочу обсудить тест-драйв" class="btn-tg btn-pulse-dark" target="_blank" style="display:inline-flex;align-self:stretch;justify-content:center;width:100%;background:#0a0a0a;color:var(--accent);">Обсудить тест-драйв →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</div>
+
+<script>
+  document.body.classList.add('locked');
+
+  document.getElementById('readBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.body.classList.remove('locked');
+    var el = document.getElementById('case');
+    el.classList.remove('is-hidden');
+    setTimeout(function() {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  });
+</script>
+
+
+<script>
+(function() {
+  var total = 5;
+  var current = 0;
+  var slides = document.querySelectorAll('.carousel-slide');
+  var dots = document.querySelectorAll('.carousel-dot-btn');
+  var counter = document.getElementById('carouselCounter');
+
+  function go(n) {
+    slides[current].classList.remove('carousel-active');
+    dots[current].classList.remove('dot-active');
+    current = (n + total) % total;
+    slides[current].classList.add('carousel-active');
+    dots[current].classList.add('dot-active');
+    counter.textContent = (current + 1) + ' / ' + total;
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', function() { go(current - 1); });
+  document.getElementById('nextBtn').addEventListener('click', function() { go(current + 1); });
+  dots.forEach(function(d) {
+    d.addEventListener('click', function() { go(parseInt(this.dataset.dot)); });
+  });
+
+  var cityTrack = document.querySelector('#cityCarousel .carousel-track');
+  var swipeStartX = 0;
+  if (cityTrack) {
+    cityTrack.addEventListener('touchstart', function(e) { swipeStartX = e.touches[0].clientX; }, {passive:true});
+    cityTrack.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - swipeStartX;
+      if (Math.abs(dx) > 50) go(current + (dx < 0 ? 1 : -1));
+    });
+  }
+})();
+</script>
+
+<script>
+(function() {
+  var track = document.getElementById('proofTrack');
+  var dots = document.querySelectorAll('#proofDots .proof-carousel-dot');
+  var counter = document.getElementById('proofCounter');
+  var total = dots.length;
+  var cur = 0;
+
+  function go(n) {
+    cur = (n + total) % total;
+    track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+    dots.forEach(function(d, i) { d.classList.toggle('active', i === cur); });
+    counter.textContent = (cur + 1) + ' / ' + total;
+  }
+
+  document.getElementById('proofPrev').addEventListener('click', function() { go(cur - 1); });
+  document.getElementById('proofNext').addEventListener('click', function() { go(cur + 1); });
+  dots.forEach(function(d) { d.addEventListener('click', function() { go(+this.dataset.i); }); });
+
+  var startX = 0;
+  track.parentElement.addEventListener('touchstart', function(e) { startX = e.touches[0].clientX; }, {passive:true});
+  track.parentElement.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) go(cur + (dx < 0 ? 1 : -1));
+  });
+})();
+</script>
+<script>
+(function() {
+  var flow = document.querySelector('.steps-flow');
+  if (!flow) return;
+  var observer = new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting) {
+      flow.classList.add('lit');
+      observer.disconnect();
+    }
+  }, { threshold: 0.2 });
+  observer.observe(flow);
+})();
+</script>
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">✕</span>
+  <img id="lightboxImg" src="" alt="">
+</div>
+<script>
+(function() {
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.cs-img').forEach(function(img) {
+    img.addEventListener('click', function() {
+      lbImg.src = this.src;
+      lb.classList.add('open');
+    });
+  });
+  lb.addEventListener('click', function(e) {
+    if (e.target === lb || e.target === document.getElementById('lightboxClose')) {
+      lb.classList.remove('open');
+      lbImg.src = '';
+    }
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { lb.classList.remove('open'); lbImg.src = ''; }
+  });
+})();
+</script>
+</body>
+</html>
