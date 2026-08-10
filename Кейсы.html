@@ -1,0 +1,302 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>Кейсы по продвижению строительных компаний на Авито</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;900&family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+:root {
+  --bg: #000000;
+  --grid-color: rgba(249,249,249,0.06);
+  --accent: #e85002;
+  --text-primary: #f9f9f9;
+  --text-muted: #a7a7a7;
+  --border: #333333;
+  --grid-size: 40px;
+}
+
+html, body {
+  background: var(--bg);
+  font-family: 'Onest', sans-serif;
+  color: var(--text-primary);
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hl { color: var(--accent); }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 24px;
+  padding-top: max(64px, env(safe-area-inset-top));
+  padding-bottom: max(48px, env(safe-area-inset-bottom));
+  overflow: hidden;
+}
+.bg-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+.bg-glow {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(232,80,2,0.05) 0%, transparent 70%);
+}
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 1080px; width: 100%; text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(232,80,2,0.08);
+  border: 1px solid rgba(232,80,2,0.22);
+  border-radius: 100px;
+  padding: 8px 18px;
+  margin-bottom: 28px;
+  animation: fadeUp 0.6s 0s ease both;
+}
+
+.hero-heading {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: clamp(24px, 3.2vw, 40px);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  animation: fadeUp 0.6s 0.1s ease both;
+  margin: 0 0 16px;
+  max-width: 720px;
+  text-wrap: balance;
+}
+
+.hero-sub {
+  font-size: clamp(14px, 1.4vw, 16px);
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--text-muted);
+  max-width: 560px;
+  margin: 0;
+  animation: fadeUp 0.6s 0.2s ease both;
+}
+
+/* ─── CASE CARDS ─── */
+.cases-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  text-align: left;
+  animation: fadeUp 0.6s 0.32s ease both;
+}
+
+.case-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 26px 26px;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.case-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(232,80,2,0.3);
+  background: rgba(232,80,2,0.035);
+}
+.case-card::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 120% 60% at 50% 0%, rgba(232,80,2,0.06) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+.case-card:hover::after { opacity: 1; }
+
+.case-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 5px 12px;
+  margin-bottom: 20px;
+}
+
+.case-title {
+  font-family: 'Unbounded', sans-serif;
+  font-weight: 700;
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+
+.case-desc {
+  font-size: 13.5px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+  flex: 1;
+}
+
+.case-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--accent);
+}
+.case-cta svg { transition: transform 0.2s ease; }
+.case-card:hover .case-cta svg { transform: translateX(4px); }
+
+/* ─── HERO TOP: PROFILE + HEADING SIDE BY SIDE ─── */
+.hero-top {
+  display: flex;
+  align-items: stretch;
+  gap: 56px;
+  text-align: left;
+  margin-bottom: 48px;
+  width: 100%;
+}
+.profile-card {
+  flex: 0 0 320px;
+  width: 320px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  animation: fadeUp 0.6s 0s ease both;
+}
+.profile-photo-wrap { width: 100%; aspect-ratio: 1 / 1; }
+.profile-photo { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.profile-body { padding: 22px 26px 26px; }
+.profile-name { font-family: 'Unbounded', sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.01em; margin-bottom: 6px; }
+.profile-role { font-size: 13.5px; color: var(--text-muted); margin-bottom: 14px; line-height: 1.4; }
+.profile-bio { font-size: 13.5px; font-weight: 300; line-height: 1.6; color: var(--text-muted); }
+
+.hero-top-text { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; }
+
+@media (max-width: 700px) {
+  .hero { padding: 48px 16px 40px; }
+  .hero-heading { font-size: clamp(20px, 6vw, 26px); max-width: none; }
+  .hero-sub { font-size: 14px; max-width: none; }
+  .cases-grid { grid-template-columns: 1fr; gap: 12px; }
+  .case-card { padding: 22px 20px; }
+
+  .hero-top { flex-direction: column; align-items: flex-start; gap: 20px; margin-bottom: 36px; }
+  .profile-card { flex: 0 0 auto; width: 100%; display: flex; align-items: center; gap: 14px; }
+  .profile-photo-wrap { width: 64px; height: 64px; border-radius: 12px; flex-shrink: 0; }
+  .profile-body { padding: 0; flex: 1; }
+  .profile-role { margin-bottom: 0; }
+  .profile-bio { display: none; }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-top">
+      <div class="profile-card">
+        <div class="profile-photo-wrap">
+          <img class="profile-photo" src="img_modul/1_avatar.jpg" alt="Артем Лутов">
+        </div>
+        <div class="profile-body">
+          <div class="profile-name">Артем Лутов</div>
+          <div class="profile-role">Маркетолог в нише малоэтажного строительства</div>
+          <p class="profile-bio">
+            Более 2 лет занимаюсь упаковкой и продвижением строительных компаний по всей России
+          </p>
+        </div>
+      </div>
+
+      <div class="hero-top-text">
+        <h1 class="hero-heading">
+          Как я <span class="hl">помогаю</span> <span class="hl">больше зарабатывать</span>
+          строительным компаниям через Авито?
+        </h1>
+        <p class="hero-sub">
+          Два реальных кейса с цифрами: сколько вложили в рекламу, что сделали внутри
+          и сколько заработали на этом компании
+        </p>
+      </div>
+    </div>
+
+    <div class="cases-grid">
+      <a class="case-card" href="https://artemfut16-png.github.io/case-modulnye-doma/" target="_blank" rel="noopener">
+        <span class="case-tag">Модульные дома и бани</span>
+        <h2 class="case-title">
+          Вложили 192 000 ₽ в Авито и закрыли <span class="hl">17 сделок за 2 месяца</span> по модульным домам и баням
+        </h2>
+        <p class="case-desc">
+          Показываю на реальном кейсе, как компания-производитель модульных домов и бань начала стабильно получать клиентов со средним чеком 1,8 млн ₽ через Авито
+        </p>
+        <span class="case-cta">
+          Читать кейс
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M7.5 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+
+      <a class="case-card" href="https://artemfut16-png.github.io/avito-case/?clckid=d13af096" target="_blank" rel="noopener">
+        <span class="case-tag">Дома из газобетона</span>
+        <h2 class="case-title">
+          <span class="hl">Вложили 52 000 ₽</span> в Авито и <span class="hl">получили 16 900 000 ₽</span> выручки за 3 месяца
+        </h2>
+        <p class="case-desc">
+          Показываю на реальном кейсе, как владелец строительной компании начал зарабатывать дополнительно 1 млн ₽ чистой прибыли в месяц на домах из газобетона
+        </p>
+        <span class="case-cta">
+          Читать кейс
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M7.5 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
