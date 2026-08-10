@@ -2,13 +2,27 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#141414">
 <title>Вложили 192 000 ₽ в Авито и закрыли 17 сделок на модульные дома и бани</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;700;900&family=Onest:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+img {
+  max-width: 100%;
+  height: auto;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
 
 :root {
   --bg: #141414;
@@ -26,8 +40,9 @@ html, body {
   font-family: 'Onest', sans-serif;
   color: var(--text-primary);
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
-body.locked { overflow: hidden; height: 100vh; }
+body.locked { overflow: hidden; height: 100vh; height: 100dvh; }
 
 .hl { color: var(--accent); }
 
@@ -79,10 +94,13 @@ body.locked { overflow: hidden; height: 100vh; }
 .hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 80px 24px;
+  padding-top: max(80px, env(safe-area-inset-top));
+  padding-bottom: max(80px, env(safe-area-inset-bottom));
   overflow: hidden;
 }
 .bg-grid {
@@ -640,6 +658,11 @@ body.locked { overflow: hidden; height: 100vh; }
 
   /* Cabinet screenshot */
   .cabinet-screenshot { margin-top: 28px; }
+
+  /* Larger touch targets for carousel controls */
+  .carousel-btn, .proof-carousel-btn { width: 40px; height: 40px; }
+  .carousel-dot-btn, .proof-carousel-dot { position: relative; }
+  .carousel-dot-btn::before, .proof-carousel-dot::before { content: ''; position: absolute; inset: -10px; }
 }
 
 @keyframes btnPulse {
@@ -667,8 +690,8 @@ body.locked { overflow: hidden; height: 100vh; }
       по модульным домам и баням
     </h1>
     <p class="hero-sub">
-      Показываю на реальном кейсе, как компания-производитель модульных домов и бань
-      <strong>начала стабильно получать клиентов</strong> со средним чеком <strong>1,8 млн ₽</strong> через Авито
+      Показываю на реальном кейсе, <strong>как компания-производитель модульных домов и бань
+      начала стабильно получать клиентов со средним чеком 1,8 млн ₽ через Авито</strong>
       и как эту стратегию можно протестировать всего за <span style="white-space:nowrap;">3 000 ₽</span>
     </p>
     <a href="#case" class="btn-accent btn-pulse" id="readBtn">Читать кейс полностью ↓</a>
@@ -1088,7 +1111,7 @@ body.locked { overflow: hidden; height: 100vh; }
               <div class="thg-title">Бриф по компании</div>
               <div class="thg-num">02</div>
             </div>
-            <div class="thg-text">В формате брифа собираю всю информацию по вашей компании и продукту</div>
+            <div class="thg-text">В формате созвона собираю всю информацию по вашей компании и продукту</div>
           </div>
           <div class="thg-card">
             <div class="thg-top">
@@ -1123,12 +1146,12 @@ body.locked { overflow: hidden; height: 100vh; }
               <div class="thg-title">Итоговый созвон</div>
               <div class="thg-num thg-num--accent">07</div>
             </div>
-            <div class="thg-text">По истечении 3 дней созваниваемся, обсуждаем итоги тест-драйва и дальнейшую стратегию</div>
+            <div class="thg-text">По истечении 3 дней созваниваемся, обсуждаем итоги тест-драйва и дальнейшую работу</div>
           </div>
           <div class="thg-card thg-card--wide" style="background:var(--accent);border-color:var(--accent);">
             <div style="margin-bottom:16px;">
               <div style="font-size:15px;font-weight:500;color:#0a0a0a;margin-bottom:8px;line-height:1.5;">Работаю только с одной компанией в городе</div>
-              <div style="font-size:13px;color:rgba(10,10,10,0.6);line-height:1.7;">Проверьте, свободен ли ваш город и получите бесплатный разбор с планом запуска тест-драйва</div>
+              <div style="font-size:13px;color:rgba(10,10,10,0.6);line-height:1.7;">Проверьте, свободен ли ваш город и получите бесплатный разбор текущей рекламной кампании с планом запуска тест-драйва</div>
             </div>
             <a href="https://t.me/hai_artem?text=Артем, приветствую! Хочу обсудить тест-драйв по модульным домам и баням" class="btn-tg btn-pulse-dark" target="_blank" style="display:inline-flex;align-self:stretch;justify-content:center;width:100%;background:#0a0a0a;color:var(--accent);">Обсудить тест-драйв →</a>
           </div>
@@ -1257,6 +1280,16 @@ body.locked { overflow: hidden; height: 100vh; }
   });
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') { lb.classList.remove('open'); lbImg.src = ''; }
+  });
+})();
+</script>
+<script>
+(function() {
+  document.addEventListener('contextmenu', function(e) {
+    if (e.target.tagName === 'IMG') e.preventDefault();
+  });
+  document.addEventListener('dragstart', function(e) {
+    if (e.target.tagName === 'IMG') e.preventDefault();
   });
 })();
 </script>
