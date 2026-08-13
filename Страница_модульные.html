@@ -581,7 +581,7 @@ body.locked { overflow: hidden; height: 100vh; height: 100dvh; }
   .divider { margin: 32px 0; }
 
   /* Hero */
-  .hero-heading { white-space: normal; font-size: clamp(20px, 6vw, 26px); line-height: 1.2; }
+  .hero-heading { white-space: normal; font-size: clamp(20px, 6vw, 26px); line-height: 1.25; text-wrap: balance; }
   .hero-sub { font-size: 14px; margin-bottom: 28px; }
   .btn-accent { font-size: 14px; padding: 14px 20px; width: 100%; justify-content: center; }
 
@@ -590,8 +590,9 @@ body.locked { overflow: hidden; height: 100vh; height: 100dvh; }
   .pa-sub, .result-sub, .td-sub, .did-hook-sub, .strategy-intro-text { font-size: 15px; }
   .step-text, .ss-text, .flow-text, .steps-flow-text, .fg-text, .thg-text { font-size: 13px; }
 
-  /* Force heading wrap */
-  h1, h2 { white-space: normal !important; }
+  /* Force heading wrap, let the browser balance lines instead of breaking on manual <br> */
+  h1, h2 { white-space: normal !important; text-wrap: balance; }
+  .hero-heading br, .sec-heading br { display: none; }
 
   /* Who block — avatar stays inline */
   .who-grid { grid-template-columns: 64px 1fr; gap: 16px; }
@@ -789,7 +790,7 @@ body.locked { overflow: hidden; height: 100vh; height: 100dvh; }
         <!-- CREATIVE SHOWCASE -->
         <div class="creative-showcase">
           <div class="cs-intro">
-            <div class="cs-label">Как это работает на практике</div>
+            <div class="cs-label">Как это работает на практике ?</div>
             <p class="cs-desc">Из исходных фотографий через нейросети создаем обработанные версии, часто с людьми — объявление сразу выделяется в выдаче</p>
           </div>
           <div class="cs-pair" style="display:grid;grid-template-columns:180px 32px 1fr;align-items:center;gap:0 16px;margin-bottom:24px;">
